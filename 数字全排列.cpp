@@ -1,3 +1,4 @@
+//输出数字的全排列
 #include "stdio.h"
 #define N 5
 int x[N];
