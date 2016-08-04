@@ -1,0 +1,56 @@
+#include<stdio.h>
+#pragma warning(disable:4996)
+
+int main()
+{
+	long long number;
+	while (scanf("%lld",&number) != EOF)
+	{
+		long long numMin = 0;
+		long long numMax = 1000000000;
+		long long mid = 500000000;
+		while (numMax - numMin >= 5)
+		{
+			if (number > (mid+mid*mid))
+			{
+				numMin = mid;
+				mid = (mid + numMax) / 2;
+			}
+			else if (number < (mid+mid*mid))
+			{
+				numMax = mid;
+				mid = (mid + numMin) / 2;
+			}
+			else
+			{
+				numMin = mid;
+				numMax = mid;
+				break;
+			}
+
+		}
+		long long result = 0;
+		for (long long i = numMin; i <= numMax; ++i)
+		{
+			if (number <(i+i*i))
+			{
+				result = i - 1;
+				break;
+			}
+			if (number == (i + i*i))
+			{
+				result = i;
+				break;
+			}
+		}
+
+		long long min = (result - 1) + (result - 1)*(result - 1);
+		long long max = (result + 1) + (result + 1)*(result + 1);
+		long long result1 = result + result*result;
+		printf("%lld %d\n", result, result1>min&&result1<max);
+		fflush(stdout);
+		fflush(stdin);
+
+	}
+	return 0;
+}
