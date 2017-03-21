@@ -1,0 +1,873 @@
+-- region xiaochuViewController.lua
+-- Author : ChaoZhou
+-- Date   : 2017/3/1
+-- 此文件由[BabeLua]插件自动生成
+XiaochuViewController = { };
+
+XiaochuViewController.imgList = {
+    [1] = "XiaoChuImage/score/0.png",
+    [2] = "XiaoChuImage/score/1.png",
+    [3] = "XiaoChuImage/score/2.png",
+    [4] = "XiaoChuImage/score/3.png",
+    [5] = "XiaoChuImage/score/4.png",
+    [6] = "XiaoChuImage/score/5.png",
+    [7] = "XiaoChuImage/score/6.png",
+    [8] = "XiaoChuImage/score/7.png",
+    [9] = "XiaoChuImage/score/8.png",
+    [10] = "XiaoChuImage/score/9.png",
+    -- 分数图片
+
+    [11] = "XiaoChuImage/diamonds/red.png",
+    [12] = "XiaoChuImage/diamonds/yellow.png",
+    [13] = "XiaoChuImage/diamonds/blue.png",
+    [14] = "XiaoChuImage/diamonds/green.png",
+    [15] = "XiaoChuImage/diamonds/purple.png",
+    [16] = "XiaoChuImage/diamonds/green2.png",
+    [17] = "XiaoChuImage/diamonds/orange.png",
+    -- 正常模式方块
+
+    [18] = "XiaoChuImage/diamonds/cjml1.png",
+    [19] = "XiaoChuImage/diamonds/cjml2.png",
+    [20] = "XiaoChuImage/diamonds/cjml3.png",
+    [21] = "XiaoChuImage/diamonds/cjml4.png",
+    [22] = "XiaoChuImage/diamonds/cjml5.png",
+    [23] = "XiaoChuImage/diamonds/cjml6.png",
+    [24] = "XiaoChuImage/diamonds/cjml7.png",
+    -- 色盲模式方块
+
+    [25] = "XiaoChuImage/level/0.png",
+    [26] = "XiaoChuImage/level/1.png",
+    [27] = "XiaoChuImage/level/2.png",
+    [28] = "XiaoChuImage/level/3.png",
+    [29] = "XiaoChuImage/level/4.png",
+    [30] = "XiaoChuImage/level/5.png",
+    [31] = "XiaoChuImage/level/6.png",
+    [32] = "XiaoChuImage/level/7.png",
+    [33] = "XiaoChuImage/level/8.png",
+    [34] = "XiaoChuImage/level/9.png",
+    -- level图片
+
+    [35] = "XiaoChuImage/pages/mainPage/empty.png",
+    --空白图片
+
+    [36] = "XiaoChuImage/pages/startPage.png",
+    [37] = "XiaoChuImage/pages/startButColor.png",
+    [38] = "XiaoChuImage/pages/startButShape.png", 
+    -- startPage
+
+    [39] = "XiaoChuImage/pages/pausePage/continue.png",
+    [40] = "XiaoChuImage/pages/pausePage/home.png",
+    [41] = "XiaoChuImage/pages/pausePage/pause.png",
+    -- pausePage
+
+    [42] = "XiaoChuImage/pages/passPage/pass.png",
+    [43] = "XiaoChuImage/pages/passPage/next.png",
+    -- passPage
+
+    [44] = "XiaoChuImage/pages/failPage/fail.png",
+    [45] = "XiaoChuImage/pages/failPage/home.png",
+    -- failPage
+
+    [46] = "XiaoChuImage/pages/mainPage/background.png",
+    [47] = "XiaoChuImage/pages/mainPage/pause.png",
+    [48] = "XiaoChuImage/pages/mainPage/line_col.png",
+    [49] = "XiaoChuImage/pages/mainPage/line_row.png",
+    [50] = "XiaoChuImage/pages/mainPage/touch.png",
+    [51] = "XiaoChuImage/pages/mainPage/cover.png",
+    -- mainPage
+    [52] = "XiaoChuImage/passNum/0.png",
+    [53] = "XiaoChuImage/passNum/1.png",
+    [54] = "XiaoChuImage/passNum/2.png",
+    [55] = "XiaoChuImage/passNum/3.png",
+    [56] = "XiaoChuImage/passNum/4.png",
+    [57] = "XiaoChuImage/passNum/5.png",
+    [58] = "XiaoChuImage/passNum/6.png",
+    [59] = "XiaoChuImage/passNum/7.png",
+    [60] = "XiaoChuImage/passNum/8.png",
+    [61] = "XiaoChuImage/passNum/9.png",
+    --主界面上方小人计数
+
+    [62] = "XiaoChuImage/pages/failPage/0.png",
+    [63] = "XiaoChuImage/pages/failPage/1.png",
+    [64] = "XiaoChuImage/pages/failPage/2.png",
+    [65] = "XiaoChuImage/pages/failPage/3.png",
+    [66] = "XiaoChuImage/pages/failPage/4.png",
+    [67] = "XiaoChuImage/pages/failPage/5.png",
+    [68] = "XiaoChuImage/pages/failPage/6.png",
+    [69] = "XiaoChuImage/pages/failPage/7.png",
+    [70] = "XiaoChuImage/pages/failPage/8.png",
+    [71] = "XiaoChuImage/pages/failPage/9.png",
+    --结束界面超人和小人
+
+    [72] = "XiaoChuImage/pages/failPage/number0.png",
+    [73] = "XiaoChuImage/pages/failPage/number1.png",
+    [74] = "XiaoChuImage/pages/failPage/number2.png",
+    [75] = "XiaoChuImage/pages/failPage/number3.png",
+    [76] = "XiaoChuImage/pages/failPage/number4.png",
+    [77] = "XiaoChuImage/pages/failPage/number5.png",
+    [78] = "XiaoChuImage/pages/failPage/number6.png",
+    [79] = "XiaoChuImage/pages/failPage/number7.png",
+    [80] = "XiaoChuImage/pages/failPage/number8.png",
+    [81] = "XiaoChuImage/pages/failPage/number9.png",
+    --结束界面分数
+    [82] = "XiaoChuImage/person/medal0.png",
+    [83] = "XiaoChuImage/person/medal1.png",
+    [84] = "XiaoChuImage/person/medal2.png",
+    [85] = "XiaoChuImage/person/medal3.png",
+    [86] = "XiaoChuImage/person/medal4.png",
+    [87] = "XiaoChuImage/person/medal5.png",
+    [88] = "XiaoChuImage/person/medal6.png",
+    [89] = "XiaoChuImage/person/medal7.png",
+    [90] = "XiaoChuImage/person/medal8.png",
+    [91] = "XiaoChuImage/person/medal9.png",
+    --徽章
+    [92] = "XiaoChuImage/person/smallMedal0.png",
+    [93] = "XiaoChuImage/person/smallMedal1.png",
+    [94] = "XiaoChuImage/person/smallMedal2.png",
+    [95] = "XiaoChuImage/person/smallMedal3.png",
+    [96] = "XiaoChuImage/person/smallMedal4.png",
+    [97] = "XiaoChuImage/person/smallMedal5.png",
+    [98] = "XiaoChuImage/person/smallMedal6.png",
+    [99] = "XiaoChuImage/person/smallMedal7.png",
+    [100] = "XiaoChuImage/person/smallMedal8.png",
+    [101] = "XiaoChuImage/person/smallMedal9.png",
+    --小徽章
+    [102] = "XiaoChuImage/diamonds/double1.png",
+    [103] = "XiaoChuImage/diamonds/double2.png",
+    [104] = "XiaoChuImage/diamonds/double3.png",
+    [105] = "XiaoChuImage/diamonds/double4.png",
+    [106] = "XiaoChuImage/diamonds/double5.png",
+    [107] = "XiaoChuImage/diamonds/double6.png",
+    [108] = "XiaoChuImage/diamonds/double7.png",
+    --色彩2方块
+    [109] = "XiaoChuImage/diamonds/triple1.png",
+    [110] = "XiaoChuImage/diamonds/triple2.png",
+    [111] = "XiaoChuImage/diamonds/triple3.png",
+    [112] = "XiaoChuImage/diamonds/triple4.png",
+    [113] = "XiaoChuImage/diamonds/triple5.png",
+    [114] = "XiaoChuImage/diamonds/triple6.png",
+    [115] = "XiaoChuImage/diamonds/triple7.png",
+    --色彩3方块
+    [116] = "XiaoChuImage/diamonds/quartar1.png",
+    [117] = "XiaoChuImage/diamonds/quartar2.png",
+    [118] = "XiaoChuImage/diamonds/quartar3.png",
+    [119] = "XiaoChuImage/diamonds/quartar4.png",
+    [120] = "XiaoChuImage/diamonds/quartar5.png",
+    [121] = "XiaoChuImage/diamonds/quartar6.png",
+    [122] = "XiaoChuImage/diamonds/quartar7.png",
+    --色彩4方块
+    [123] = "XiaoChuImage/diamonds/penta1.png",
+    [124] = "XiaoChuImage/diamonds/penta2.png",
+    [125] = "XiaoChuImage/diamonds/penta3.png",
+    [126] = "XiaoChuImage/diamonds/penta4.png",
+    [127] = "XiaoChuImage/diamonds/penta5.png",
+    [128] = "XiaoChuImage/diamonds/penta6.png",
+    [129] = "XiaoChuImage/diamonds/penta7.png",
+    --色彩5方块
+    [130] = "XiaoChuImage/diamonds/sqbb1.png",
+    [131] = "XiaoChuImage/diamonds/sqbb2.png",
+    [132] = "XiaoChuImage/diamonds/sqbb3.png",
+    [133] = "XiaoChuImage/diamonds/sqbb4.png",
+    [134] = "XiaoChuImage/diamonds/sqbb5.png",
+    [135] = "XiaoChuImage/diamonds/sqbb6.png",
+    [136] = "XiaoChuImage/diamonds/sqbb7.png",
+    --神奇宝贝方块
+    [137] = "XiaoChuImage/diamonds/yys1.png",
+    [138] = "XiaoChuImage/diamonds/yys2.png",
+    [139] = "XiaoChuImage/diamonds/yys3.png",
+    [140] = "XiaoChuImage/diamonds/yys4.png",
+    [141] = "XiaoChuImage/diamonds/yys5.png",
+    [142] = "XiaoChuImage/diamonds/yys6.png",
+    [143] = "XiaoChuImage/diamonds/yys7.png",
+    --阴阳师方块
+    [144] = "XiaoChuImage/diamonds/wzry1.png",
+    [145] = "XiaoChuImage/diamonds/wzry2.png",
+    [146] = "XiaoChuImage/diamonds/wzry3.png",
+    [147] = "XiaoChuImage/diamonds/wzry4.png",
+    [148] = "XiaoChuImage/diamonds/wzry5.png",
+    [149] = "XiaoChuImage/diamonds/wzry6.png",
+    [150] = "XiaoChuImage/diamonds/wzry7.png",
+    --王者方块
+    [151] = "XiaoChuImage/diamonds/hzw1.png",
+    [152] = "XiaoChuImage/diamonds/hzw2.png",
+    [153] = "XiaoChuImage/diamonds/hzw3.png",
+    [154] = "XiaoChuImage/diamonds/hzw4.png",
+    [155] = "XiaoChuImage/diamonds/hzw5.png",
+    [156] = "XiaoChuImage/diamonds/hzw6.png",
+    [157] = "XiaoChuImage/diamonds/hzw7.png",
+    --海贼王方块
+    [158] = "XiaoChuImage/diamonds/dog.png"  --狗的方块
+
+};
+
+diamondsListPos ={
+    {{11,17},{102,108},{109,115},{116,122},{123,129}},
+    {{18,24},{130,136},{137,143},{144,150},{151,157}}
+};
+
+data_matrix = {
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0, 0, 0 }
+};
+
+
+score = 0;  --分数
+level = 1;  --等级
+levelCount = 0;  --level计数
+addCount = 0;  --添加方块计数
+modeFlag = 1;  -- 1是颜色模式，2是形状模式,3是着狗模式
+passNum = 1;  --关卡数
+beyondNum =34;   --超越人数
+dogNum =1; --狗的数量
+speedSet = 20;
+
+--[[
+函数：XiaochuViewController.initView
+参数：
+功能：初始化
+--]]
+XiaochuViewController.initView = function(context)
+    math.randomseed(os.time());
+    context.levelList={};     --等级控件
+    context.scoreList = {};   --总的分数控件
+    context.btnList = {};     --方块控件
+    context.emptyList = {};   --空的格子列表
+    context.scoreFail = {};   --失败的分数控件
+    context.beyond ={};       --超越控件
+
+    context.bg = context.m_root:getChildByName("base_view"):getChildByName("background");  --背景
+    context.start = context.m_root:getChildByName("base_view"):getChildByName("startPage");   --开始界面
+    context.startButColor = context.start:getChildByName("startButColor");                   --颜色模式开始按钮
+    context.startButShape = context.start:getChildByName("startButShape");                   --形状模式开始按钮
+    context.startButCatchDog = context.start:getChildByName("startButCatchDog");                --捉狗模式按钮
+    --主页控件设定
+
+    context.startButColor:setOnClick(context, XiaochuViewController.startColor);          --颜色开始点击事件
+    context.startButShape:setOnClick(context, XiaochuViewController.startShape);          --形状开始点击事件
+    context.startButCatchDog:setOnClick(context, XiaochuViewController.startCatchDog);    --着狗开始点击事件
+    --主页的点击事件设定
+
+    context.pause = context.bg:getChildByName("pause");                                      --暂停按钮
+    context.passNum = context.bg:getChildByName("passNum");                                --主页人物计数
+    context.person =  context.bg:getChildByName("person");                                --主页人物图
+    --游戏页控件设定
+
+    context.pause:setOnClick(context, XiaochuViewController.pausePage);                   --暂停按钮事件
+    --游戏页点击事件
+
+    context.pausePage = context.m_root:getChildByName("base_view"):getChildByName("pausePage");
+    context.continue = context.pausePage:getChildByName("continue");
+    context.home1 = context.pausePage:getChildByName("home");
+    --暂停页面控件设定
+    
+    context.failPage = context.m_root:getChildByName("base_view"):getChildByName("failPage");
+    context.home2 = context.failPage:getChildByName("home");
+    context.person2 = context.failPage:getChildByName("person");
+    for i=1,2 do
+        context.beyond[i] = context.failPage:getChildByName("num" .. i);    --初始化byond控件
+    end    -- end beyond init
+
+    for i=1,5 do
+        context.scoreFail[i] = context.failPage:getChildByName("score" .. i);    --初始化失败分数控件
+    end    -- end scoreFail init
+    --失败页面控件设定
+
+
+    context.passPage = context.m_root:getChildByName("base_view"):getChildByName("passPage");
+    context.home3 = context.passPage:getChildByName("home");
+    context.next = context.passPage:getChildByName("next");
+    context.smallPerson = context.passPage:getChildByName("smallPerson");
+    --通关页面控件设定
+
+
+end   --end initView
+
+
+
+--[[
+函数：XiaochuViewController.startPage
+参数：
+功能：开始页面点击(颜色按钮)
+--]]
+XiaochuViewController.startColor = function(context)
+        modeFlag =1;
+        context.start:setVisible(false);
+
+        context.passNum:setFile(XiaochuViewController.imgList[passNum+52]);
+        context.person:setFile(XiaochuViewController.imgList[passNum+82]);
+        --关卡计数以及人物
+        for i=1,5 do
+            context.scoreList[i] = context.bg:getChildByName("score" .. i);    --初始化分数控件
+        end    -- end socre init
+
+        for i=1,2 do
+            context.levelList[i] = context.bg:getChildByName("level" .. i);    --初始化level控件
+        end    -- end level init
+
+        for i = 1, 10 do  --初始化画面
+            for j = 1, 7 do
+                local cacl =(i - 1) * 7 + j;
+                context.btnList[cacl] = context.bg:getChildByName("diamonds" .. cacl);
+                context.btnList[cacl]:setEventTouch( { context, cacl }, XiaochuViewController.judgeDisappear);
+                if math.random(1, 3) == 1 then
+                    -- context.btnList[cacl]:setVisible(flase);
+                    data_matrix[i][j] = 35;
+                    context.btnList[cacl]:setFile(XiaochuViewController.imgList[35]);
+                    table.insert(context.emptyList,{i,j});
+                else
+                    data_matrix[i][j] = math.random(diamondsListPos[1][passNum+1][1], diamondsListPos[1][passNum+1][2]);
+                    context.btnList[cacl]:setFile(XiaochuViewController.imgList[data_matrix[i][j]]);
+                end   -- end random
+            end
+        end   --end diamond init
+
+        context.levelSpeed =new(AnimInt, kAnimRepeat, 0, 1, speedSet, 0);
+        context.levelSpeed:setEvent(context,XiaochuViewController.showLevel);
+end   --end startColor
+
+--[[
+函数：XiaochuViewController.startPage
+参数：
+功能：开始页面点击（形状按钮）
+--]]
+XiaochuViewController.startShape = function(context)
+        modeFlag =2;
+        context.start:setVisible(false);
+
+        context.passNum:setFile(XiaochuViewController.imgList[passNum+52]);
+        context.person:setFile(XiaochuViewController.imgList[passNum+87]);
+        --关卡计数以及人物
+        for i=1,5 do
+            context.scoreList[i] = context.bg:getChildByName("score" .. i);    --初始化分数控件
+        end    -- end socre init
+
+        for i=1,2 do
+            context.levelList[i] = context.bg:getChildByName("level" .. i);    --初始化level控件
+        end    -- end level init
+
+        for i = 1, 10 do  --初始化画面
+            for j = 1, 7 do
+                local cacl =(i - 1) * 7 + j;
+                context.btnList[cacl] = context.bg:getChildByName("diamonds" .. cacl);
+                context.btnList[cacl]:setEventTouch( { context, cacl }, XiaochuViewController.judgeDisappear);
+                if math.random(1, 3) == 1 then
+                    -- context.btnList[cacl]:setVisible(flase);
+                    data_matrix[i][j] = 35;
+                    context.btnList[cacl]:setFile(XiaochuViewController.imgList[35]);
+                    table.insert(context.emptyList,{i,j});
+                else
+                    data_matrix[i][j] = math.random(diamondsListPos[2][passNum+1][1], diamondsListPos[2][passNum+1][2]);
+                    context.btnList[cacl]:setFile(XiaochuViewController.imgList[data_matrix[i][j]]);
+                end  --end random
+            end    
+        end    --end diamond init
+
+        context.levelSpeed =new(AnimInt, kAnimRepeat, 0, 1, speedSet, 0);
+        context.levelSpeed:setEvent(context,XiaochuViewController.showLevel);
+end    --end startShape
+
+
+--[[
+函数：XiaochuViewController.startCatchDog
+参数：
+功能：开始页面点击（着狗按钮）
+--]]
+XiaochuViewController.startCatchDog = function(context)
+    modeFlag =2;
+    context.start:setVisible(false);
+    dogNum = passNum;
+
+    context.passNum:setFile(XiaochuViewController.imgList[passNum+52]);
+    context.person:setFile(XiaochuViewController.imgList[passNum+82]);
+    --关卡计数以及人物
+    for i=1,5 do
+        context.scoreList[i] = context.bg:getChildByName("score" .. i);    --初始化分数控件
+    end    -- end socre init
+
+    for i=1,2 do
+        context.levelList[i] = context.bg:getChildByName("level" .. i);    --初始化level控件
+    end    -- end level init
+
+    for i = 1, 10 do  --初始化画面
+        for j = 1, 7 do
+            local cacl =(i - 1) * 7 + j;
+            context.btnList[cacl] = context.bg:getChildByName("diamonds" .. cacl);
+            context.btnList[cacl]:setEventTouch( { context, cacl }, XiaochuViewController.judgeDisappear);
+            if math.random(1, 3) == 1 then
+                -- context.btnList[cacl]:setVisible(flase);
+                data_matrix[i][j] = 35;
+                context.btnList[cacl]:setFile(XiaochuViewController.imgList[35]);
+                table.insert(context.emptyList,{i,j});
+            else
+                data_matrix[i][j] = math.random(diamondsListPos[2][passNum+1][1], diamondsListPos[2][passNum+1][2]);
+                context.btnList[cacl]:setFile(XiaochuViewController.imgList[data_matrix[i][j]]);
+            end   -- end random
+        end
+    end   --end diamond init
+
+    local dogPos = table.remove(context.emptyList,math.random(1,#context.emptyList));
+    context.btnList[(dogPos[1]-1)*7+dogPos[2]]:setFile(XiaochuViewController.imgList[158]);
+    data_matrix[dogPos[1]][dogPos[2]] = 158;                  --给狗一个位置
+
+    context.levelSpeed =new(AnimInt, kAnimRepeat, 0, 1, speedSet, 0);
+    context.levelSpeed:setEvent(context,XiaochuViewController.showLevel);
+end
+
+--[[
+函数：XiaochuViewController.judgeDisappear
+参数：
+功能：判断是否可以消除
+--]]
+XiaochuViewController.judgeDisappear = function(diamondsPos, type)
+    for i = 1, 10 do  --画面更新画面
+        for j = 1, 7 do
+            diamondsPos[1].btnList[(i - 1) * 7 + j]:setFile(XiaochuViewController.imgList[data_matrix[i][j]]);
+        end    
+    end    --end diamond init
+
+    if type == kFingerUp then
+        local pos_X = diamondsPos[2] % 7;
+        if pos_X == 0 then
+            pos_X = 7;
+        end
+        local pos_Y =((diamondsPos[2] - pos_X)) / 7 + 1;
+        local tempPos = {};
+        local posDir  ={};
+        if (data_matrix[pos_Y][pos_X] ~= 35 and data_matrix[pos_Y][pos_X] ~= 158) then    -- 是否点击了空白处
+            return;
+        else
+            diamondsPos[1].btnList[(pos_Y-1) * 7 + pos_X]:setFile(XiaochuViewController.imgList[50]); --标记点击位置
+            -- 上方向判断
+            if pos_Y ~= 1 then
+                for i = pos_Y - 1, 1, -1 do
+                    if data_matrix[i][pos_X] ~= 35 then
+                        table.insert(tempPos, { i, pos_X });
+                        table.insert(posDir,1);  --1表示方向是上方向
+                        break;
+                    end
+                end
+            end
+
+            -- 下方向判断
+            if pos_Y ~= 10 then
+                for i = pos_Y + 1, 10 do
+                    if data_matrix[i][pos_X] ~= 35 then
+                        table.insert(tempPos, { i, pos_X });
+                        table.insert(posDir,2);  --2表示方向是下方向
+                        break;
+                    end
+                end
+            end
+
+            -- 左方向判断
+            if pos_X ~= 1 then
+                for i = pos_X - 1, 1, -1 do
+                    if data_matrix[pos_Y][i] ~= 35 then
+                        table.insert(tempPos, { pos_Y, i });
+                        table.insert(posDir,3);  --3表示方向是左方向
+                        break;
+                    end
+                end
+            end
+
+            -- 右方向判断
+            if pos_X ~= 7 then
+                for i = pos_X + 1, 7 do
+                    if data_matrix[pos_Y][i] ~= 35 then
+                        table.insert(tempPos, { pos_Y, i });
+                        table.insert(posDir,4);  --4表示方向是右方向
+                        break;
+                    end
+                end
+            end
+        end     --是否点击空白结尾
+
+        local count =0 ; --此次消除方块的数目
+        -- 对加入临时表的四个方向数据进行检测
+        if #tempPos > 1 then
+            local aisArray = { 0, 0, 0, 0 };
+
+            for i = 1, #tempPos do
+                for j = 1, #tempPos do
+                    if data_matrix[tempPos[i][1]][tempPos[i][2]] == data_matrix[tempPos[j][1]][tempPos[j][2]] then
+                        aisArray[i] = aisArray[i] + 1;
+                    end
+                end
+            end  --end aisArray
+
+            for key, value in ipairs(tempPos) do  --体现消除痕迹
+                if aisArray[key] > 1 then
+                    if posDir[key] == 1 then
+                        for i =pos_Y-1,value[1]+1,-1 do
+                            diamondsPos[1].btnList[(i-1)*7 + value[2]]:setFile(XiaochuViewController.imgList[48]);
+                        end
+                    elseif posDir[key] == 2 then
+                        for i =pos_Y+1,value[1]-1 do
+                            diamondsPos[1].btnList[(i-1)*7 + value[2]]:setFile(XiaochuViewController.imgList[48]);
+                        end
+                    elseif posDir[key] == 3 then
+                        for i =pos_X-1,value[2]+1,-1 do
+                            diamondsPos[1].btnList[(value[1]-1)*7 + i]:setFile(XiaochuViewController.imgList[49]);
+                        end
+                    else
+                        for i =pos_X+1,value[2]-1 do
+                            diamondsPos[1].btnList[(value[1]-1)*7 + i]:setFile(XiaochuViewController.imgList[49]);
+                        end
+                    end
+                end
+            end    --end remove path
+
+
+            GCD.PostDelay(nil,function()  --延时
+                for key, value in ipairs(aisArray) do   --消除图案
+                    if value > 1 then
+                        count = count +1;
+                        local dropDiamonds = new(Image,XiaochuViewController.imgList[data_matrix[tempPos[key][1]][tempPos[key][2]]]);
+                        data_matrix[tempPos[key][1]][tempPos[key][2]] = 35;
+                        diamondsPos[1].btnList[(tempPos[key][1] -1) * 7 + tempPos[key][2]]:setFile(XiaochuViewController.imgList[35]);
+                        table.insert(diamondsPos[1].emptyList,{tempPos[key][1],tempPos[key][2]});
+                        if #diamondsPos[1].emptyList > 59 and passNum < 4 then   --判断胜利条件
+                            XiaochuViewController.passPage(diamondsPos[1]);
+                        end
+                        ----------
+--                        local drop = diamondsPos[1].btnList[(tempPos[key][1] -1) * 7 + tempPos[key][2]]:addPropTranslate(1, kAnimNormal, 400, -1, 0, 0 , 0, 660);
+--                        drop:setEvent(nil, function()
+--                            diamondsPos[1].btnList[(tempPos[key][1] -1) * 7 + tempPos[key][2]]:removeProp(1);
+--                            diamondsPos[1].btnList[(tempPos[key][1] -1) * 7 + tempPos[key][2]]:setFile(XiaochuViewController.imgList[35]);
+--                        end);
+
+                        ----------
+
+                        dropDiamonds:setPos(0, 0);
+                        diamondsPos[1].btnList[(tempPos[key][1] -1) * 7 + tempPos[key][2]]:addChild(dropDiamonds);
+                        local drop = dropDiamonds:addPropTranslate(1, kAnimNormal, 400, -1, 0, 0 , 0, 660);
+                        drop:setEvent(nil, function()
+                            dropDiamonds:removeProp(1);
+                            delete(dropDiamonds);
+                        end);
+                        ----------
+                       -- diamondsPos[1].btnList[(tempPos[key][1] -1) * 7 + tempPos[key][2]]:setFile(XiaochuViewController.imgList[37]);
+                    end
+                end
+
+                if count <=1 then
+                    for i=1,3 do
+                        XiaochuViewController.addDiamonds(diamondsPos[1]);  --点击错误直接添加三个方块
+                    end
+                end
+
+                XiaochuViewController.showScore(count*1*level,diamondsPos[1]);
+                for key, value in ipairs(tempPos) do  --擦除痕迹
+                    if aisArray[key] > 1 then
+                        if posDir[key] == 1 then
+                            for i =pos_Y-1,value[1]+1,-1 do
+                                diamondsPos[1].btnList[(i-1)*7 + value[2]]:setFile(XiaochuViewController.imgList[35]);
+                            end
+                        elseif posDir[key] == 2 then
+                            for i =pos_Y+1,value[1]-1 do
+                                diamondsPos[1].btnList[(i-1)*7 + value[2]]:setFile(XiaochuViewController.imgList[35]);
+                            end
+                        elseif posDir[key] == 3 then
+                            for i =pos_X-1,value[2]+1,-1 do
+                                diamondsPos[1].btnList[(value[1]-1)*7 + i]:setFile(XiaochuViewController.imgList[35]);
+                            end
+                        else
+                            for i =pos_X+1,value[2]-1 do
+                                diamondsPos[1].btnList[(value[1]-1)*7 + i]:setFile(XiaochuViewController.imgList[35]);
+                            end
+                        end
+                    end
+                end
+            end,nil,50);
+
+            if count >=2 and data_matrix[pos_Y][pos_X]==158 then
+                data_matrix[pos_Y][pos_X] = 35;
+               -- diamondsPos[1].btnList[(pos_Y-1) * 7 + pos_X]:setFile(XiaochuViewController.imgList[35]);
+                if dogNum > 0 then
+                    dogNum = dogNum - 1;
+                    local dogPos = table.remove(context.emptyList,math.random(1,#context.emptyList));
+                    context.btnList[(dogPos[1]-1)*7+dogPos[2]]:setFile(XiaochuViewController.imgList[158]);
+                    data_matrix[dogPos[1]][dogPos[2]] = 158;
+                else
+                    XiaochuViewController.failPage(context);
+                end
+            end  
+                 
+        end    --收集的点是否多余1
+
+
+        GCD.PostDelay(nil,function()  --延时
+        diamondsPos[1].btnList[(pos_Y-1) * 7 + pos_X]:setFile(XiaochuViewController.imgList[35]);  --擦除点击痕迹
+        end,nil,50);
+
+         --给狗一个位置
+     end  --end kFinger
+
+end
+
+
+
+
+--[[
+函数：XiaochuViewController.showScore
+参数：
+功能：展示分数
+--]]
+XiaochuViewController.showScore = function(nowScore,control)
+    score = score+nowScore;
+    if score > 99999 then  --分数最高判断
+        --游戏胜利逻辑
+        score = 99999;
+        XiaochuViewController.failPage(context);
+    end
+    local i=1;
+    local tempScore = score;
+    while tempScore ~= 0 do
+        control.scoreList[6-i]:setFile(XiaochuViewController.imgList[tempScore%10+1]);
+        tempScore= (tempScore-tempScore%10)/10;
+        i = i+1;
+    end
+end  --showScore结尾
+
+--[[
+函数：XiaochuViewController.showLevel
+参数：
+功能：展示分数
+--]]
+XiaochuViewController.showLevel = function(context)
+    if levelCount == 500  then   
+        levelCount =0;
+        level = level +1;
+        if level > 99 then   --等级最高99
+            level = 99
+        end
+        local i=1;
+        local tempLevel = level;
+        while tempLevel ~= 0 do
+            context.levelList[3-i]:setFile(XiaochuViewController.imgList[tempLevel%10+25]);
+            tempLevel= (tempLevel-tempLevel%10)/10;
+            i = i+1;
+        end
+    else
+        levelCount = levelCount + 1;
+    end
+    if addCount >= 100-level then
+        addCount =0;
+        XiaochuViewController.addDiamonds(context);
+    else
+        addCount = addCount + 1;
+    end
+end  -- end showLevel
+
+
+--[[
+函数：XiaochuViewController.addDiamonds
+参数：
+功能：添加方块
+--]]
+XiaochuViewController.addDiamonds = function(context)
+    local len = #context.emptyList;
+    if len > 0 then
+        tempTable = table.remove(context.emptyList,math.random(1,len));
+        if modeFlag == 1 then
+            data_matrix[tempTable[1]][tempTable[2]] = math.random(diamondsListPos[1][passNum+1][1], diamondsListPos[1][passNum+1][2]);
+            context.btnList[(tempTable[1]-1)*7+tempTable[2]]:setFile(XiaochuViewController.imgList[data_matrix[tempTable[1]][tempTable[2]]]);
+        else
+            data_matrix[tempTable[1]][tempTable[2]] = math.random(diamondsListPos[2][passNum+1][1], diamondsListPos[2][passNum+1][2]);
+            context.btnList[(tempTable[1]-1)*7+tempTable[2]]:setFile(XiaochuViewController.imgList[data_matrix[tempTable[1]][tempTable[2]]]);
+        end
+
+        if #context.emptyList == 0 then
+            XiaochuViewController.failPage(context);
+        end
+
+        if #context.emptyList > 59 and passNum < 4 then   --判断胜利条件
+            XiaochuViewController.passPage(context);
+        end
+    end
+end  -- end addDiamonds
+
+
+
+--[[
+函数：XiaochuViewController.pausePage
+参数：
+功能：暂停页面
+--]]
+XiaochuViewController.pausePage = function(context)
+    if context.levelSpeed then
+        delete(context.levelSpeed);
+        context.levelSpeed=nil
+    end
+
+    context.pausePage:setVisible(true);
+    context.continue:setVisible(true);
+    context.home1:setVisible(true);
+    context.continue:setOnClick(context, XiaochuViewController.continue);
+    context.home1:setOnClick(context, XiaochuViewController.home);
+end  -- end pausePage
+
+
+--[[
+函数：XiaochuViewController.clean
+参数：
+功能：游戏结束清理资源
+--]]
+XiaochuViewController.clean = function(context)
+    level =1;        --等级
+    score =0;        --分数
+    levelCount = 0;  --level计数
+    addCount = 0;  --添加方块计数
+    passNum = 1;  --关卡数
+    context.emptyList = {}; --空格子清空
+    for i=1,5 do
+        context.scoreList[i]:setFile(XiaochuViewController.imgList[1]);
+    end
+
+    for i=1,2 do
+        context.levelList[i]:setFile(XiaochuViewController.imgList[25]);
+    end
+
+    for i=1,5 do
+        context.scoreFail[i]:setFile(XiaochuViewController.imgList[72]);
+    end
+
+    for i=1,2 do
+        context.beyond[i]:setFile(XiaochuViewController.imgList[62]);
+    end
+
+    context.passNum:setFile(XiaochuViewController.imgList[52]);
+end  -- end clean
+
+
+--[[
+函数：XiaochuViewController.home
+参数：
+功能：回到主页
+--]]
+XiaochuViewController.home = function(context)
+    XiaochuViewController.clean(context);
+    context.pausePage:setVisible(false);
+    context.failPage:setVisible(false);
+    context.passPage:setVisible(false);
+    context.start:setVisible(true);
+end  -- end home
+
+--[[
+函数：XiaochuViewController.continue
+参数：
+功能：继续之后操作
+--]]
+XiaochuViewController.continue = function(context)
+        context.levelSpeed =new(AnimInt, kAnimRepeat, 0, 1, speedSet, 0);
+        context.levelSpeed:setEvent(context,XiaochuViewController.showLevel);
+        context.pausePage:setVisible(false);
+        context.continue:setVisible(false);
+        context.home1:setVisible(false);
+end  -- end continue
+
+
+--[[
+函数：XiaochuViewController.passPage
+参数：
+功能：通关页面
+--]]
+XiaochuViewController.passPage = function(context)
+    if context.levelSpeed then
+        delete(context.levelSpeed);
+        context.levelSpeed=nil
+    end
+
+    if modeFlag == 1 then
+        context.smallPerson:setFile(XiaochuViewController.imgList[passNum+92]);   
+    else
+        context.smallPerson:setFile(XiaochuViewController.imgList[passNum+97]);   
+    end
+    context.passPage:setVisible(true);
+    context.next:setOnClick(context, XiaochuViewController.next);
+    context.home3:setOnClick(context, XiaochuViewController.home);
+
+end  -- end passPage
+
+
+--[[
+函数：XiaochuViewController.next
+参数：
+功能：下一关按钮
+--]]
+XiaochuViewController.next = function(context)
+    passNum = passNum +1;
+    context.passNum:setFile(XiaochuViewController.imgList[passNum+52]);
+    context.emptyList = {}; --空格子清空
+    context.passPage:setVisible(false);
+    if modeFlag == 1 then
+        XiaochuViewController.startColor(context);
+    else
+        XiaochuViewController.startShape(context);
+    end
+
+end  -- end next
+
+--[[
+函数：XiaochuViewController.failPage
+参数：
+功能：失败页面
+--]]
+XiaochuViewController.failPage = function(context)
+    if context.levelSpeed then
+        delete(context.levelSpeed);
+        context.levelSpeed=nil
+    end
+
+    GCD.PostDelay(nil,function()  --延时
+    for i = 1, 10 do  --画面更新画面
+        for j = 1, 7 do
+            context.btnList[(i - 1) * 7 + j]:setFile(XiaochuViewController.imgList[data_matrix[i][j]]);
+        end    
+    end    --end diamond init
+    end,nil,50);
+
+    context.failPage:setVisible(true);
+
+
+    local i=1;
+    local tempScore = score;
+    if tempScore == 0 then
+        for i=1,5 do
+            context.scoreFail[i]:setFile(XiaochuViewController.imgList[72]);
+        end
+    end
+    while tempScore ~= 0 do
+        context.scoreFail[6-i]:setFile(XiaochuViewController.imgList[tempScore%10+72]);
+        tempScore= (tempScore-tempScore%10)/10;
+        i = i+1;
+    end
+
+    local j=1;
+    local tempbeyond = score;
+    if tempbeyond >9999 then
+        tempbeyond =9999;
+    end
+    tempbeyond = (tempbeyond-tempbeyond%100)/100;
+    if tempbeyond == 0 then
+        for i=1,2 do
+            context.beyond[i]:setFile(XiaochuViewController.imgList[62]);
+        end
+    end
+    while tempbeyond ~= 0 do
+        context.beyond[3-j]:setFile(XiaochuViewController.imgList[tempbeyond%10+62]);
+        tempbeyond= (tempbeyond-tempbeyond%10)/10;
+        j = j+1;
+    end
+
+    context.person2:setFile(XiaochuViewController.imgList[passNum+62]);
+    context.home2:setOnClick(context, XiaochuViewController.home);
+end  -- end failPage
